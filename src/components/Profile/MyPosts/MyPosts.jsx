@@ -11,7 +11,8 @@ const MyPosts = () => {
                 <button>Add post</button>
             </div>
             <div className={p.posts}>
-                <Post />
+                <Post likeCounter="15" />
+                <Post likeCounter="20" />
                 <Post />
                 <Post />
                 <Post />
