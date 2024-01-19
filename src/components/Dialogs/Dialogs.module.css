@@ -14,6 +14,9 @@
 .dialog {
     color: darkgrey;
 }
+.dialog:hover {
+    color: black;
+}
 
 .messages {
     background-color: antiquewhite;
