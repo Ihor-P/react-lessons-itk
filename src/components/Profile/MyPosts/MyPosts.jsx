@@ -2,14 +2,22 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-let postData = [
-    {id: 1, message: 'Hi, how are you?', likeCounter: 12},
-    {id: 2, message: 'It\'s my first post', likeCounter: 18},
-    {id: 3, message: 'Yo', likeCounter: 21},
-    {id: 4, message: 'Yo'},
-    {id: 5, message: 'Yo'}
-]
+
 const MyPosts = () => {
+
+    let posts = [
+        {id: 1, message: 'Hi, how are you?', likeCounter: 12},
+        {id: 2, message: 'It\'s my first post', likeCounter: 18},
+        {id: 3, message: 'Yo', likeCounter: 21},
+        {id: 3, message: 'erwrwer', likeCounter: 34},
+        {id: 3, message: 'hhhaa', likeCounter: 2423},
+        {id: 4, message: 'Yo'},
+        {id: 5, message: 'Yo'}
+    ]
+
+    let postsElements = posts
+        .map(p => <Post message={p.message} likeCounter={p.likeCounter}/>)
+
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -22,9 +30,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={s.posts}>
-                <Post message={postData[0].message} likeCounter={postData[0].likeCounter}/>
-                <Post message={postData[1].message} likeCounter={postData[1].likeCounter}/>
-                <Post message={postData[2].message} likeCounter={postData[2].likeCounter}/>
+                {postsElements}
             </div>
         </div>
     );
