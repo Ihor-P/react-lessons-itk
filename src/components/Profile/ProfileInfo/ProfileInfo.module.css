@@ -4,8 +4,8 @@
 
 .imagebeach img {
 
-    margin: 0px;
-    box-sizing: border-box;
+    margin: 10px;
+    /*box-sizing: border-box;*/
     border: 5px solid white;
     text-align: center;
 }

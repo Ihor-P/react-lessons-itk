@@ -27,12 +27,13 @@ const state = {
         ],
         messages: [
             {id: 1, message: 'Hi'},
-            {id: 2, message: 'How is your it course?'},
+            {id: 2, message: 'How is your it course?', author: 'me'},
             {id: 3, message: 'Yo'},
-            {id: 4, message: 'Yo'},
+            {id: 4, message: 'Yo', author: 'me'},
             {id: 5, message: 'Yo'}
         ]
-    }
+    },
+    sideBar: {}
 }
 
 export default state;

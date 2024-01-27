@@ -12,7 +12,7 @@
 }
 
 .dialog {
-    color: darkgrey;
+    color: saddlebrown;
 }
 
 .dialog img {
@@ -21,7 +21,7 @@
     border-radius: 50%;
 }
 .dialog:hover {
-    color: black;
+    color: blue;
 }
 
 .messages {
@@ -31,6 +31,11 @@
     box-sizing: border-box;
     border: 1px solid darkgrey;
     border-radius: 10px;
+    text-align: left;
+}
+
+.right {
+    text-align: right;
 }
 
 .message {
