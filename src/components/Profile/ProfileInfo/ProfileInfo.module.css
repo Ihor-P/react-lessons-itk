@@ -5,7 +5,5 @@
 .imagebeach img {
 
     margin: 10px;
-    /*box-sizing: border-box;*/
-    border: 5px solid white;
     text-align: center;
 }

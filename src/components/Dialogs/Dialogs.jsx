@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import MessageLine from "./Message/MessageLine";
 
 const Dialogs = (props) => {
 
@@ -9,7 +9,8 @@ const Dialogs = (props) => {
         .map(d => <DialogItem name={d.name} id={d.id} ava={d.ava}/>)
 
     let messagesElements = props.state.messages
-        .map(m => <Message message={m.message}/>)
+
+        .map(mState => <MessageLine messageText={mState.message} alignRight={mState.isAuthorMe}/>)
 
     return (
         <div className={s.dialogs}>
