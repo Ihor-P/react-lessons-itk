@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Dialogs.module.css";
+import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import MessageLine from "./Message/MessageLine";
 
@@ -13,11 +13,11 @@ const Dialogs = (props) => {
         .map(mState => <MessageLine messageText={mState.message} alignRight={mState.isAuthorMe}/>)
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
+        <div className={styles.dialogs}>
+            <div className={styles.dialogsItems}>
                 {dialogsItems}
             </div>
-            <div className={s.messages}>
+            <div className={styles.messages}>
                 {messagesElements}
             </div>
         </div>

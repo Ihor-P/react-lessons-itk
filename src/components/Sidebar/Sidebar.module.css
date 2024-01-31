@@ -1,0 +1,31 @@
+.block {
+    display: block;
+}
+.none {
+    display: none;
+}
+
+.friendImgs {
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 10px;
+    gap: 8px;
+    width: 100%;
+}
+
+.friendAva {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.friendImgs img {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

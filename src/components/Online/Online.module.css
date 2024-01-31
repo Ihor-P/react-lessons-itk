@@ -1,0 +1,28 @@
+.friend {
+    background-color: rebeccapurple;
+    padding: 20px;
+}
+
+.friend img {
+    /*margin-bottom: 10px;*/
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.friend span {
+    display: inline-block;
+    color: white;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 32px;
+}
+
+.block {
+    display: block;
+}
+.none {
+    display: none;
+}
