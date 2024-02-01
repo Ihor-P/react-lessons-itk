@@ -1,28 +1,23 @@
-.friend {
+.friends {
+    display: flex;
+    flex-flow: column nowrap;
     background-color: rebeccapurple;
+}
+
+.friend {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    color: white;
+    width: 300px;
+    height: 150px;
+    font-size: 32px;
     padding: 20px;
 }
 
 .friend img {
-    /*margin-bottom: 10px;*/
     width: 150px;
     height: 150px;
     object-fit: cover;
-}
-
-.friend span {
-    display: inline-block;
-    color: white;
-    width: 150px;
-    height: 150px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 32px;
-}
-
-.block {
-    display: block;
-}
-.none {
-    display: none;
+    border-radius: 20px;
 }

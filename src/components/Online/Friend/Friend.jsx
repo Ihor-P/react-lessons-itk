@@ -3,7 +3,7 @@ import styles from "./../Online.module.css";
 
 const Friend = (props) => {
     return (
-        <div className={`${props.isOnline ? styles.block : styles.none}`}>
+        <div className={styles.friend}>
             <img
                 src={props.ava}
                 alt=""

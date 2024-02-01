@@ -5,10 +5,11 @@ import Friend from "./Friend/Friend"
 const Online = (props) => {
 
     let onlineFriends = props.state.friends
+        .filter((f) => f.online)
         .map(f => <Friend name={f.firstName} id={f.id} ava={f.ava} isOnline={f.online}/>)
 
     return (
-        <div className={styles.friend}>
+        <div className={styles.friends}>
             {onlineFriends}
         </div>
     )
