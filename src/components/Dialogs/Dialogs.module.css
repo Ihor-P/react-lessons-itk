@@ -1,5 +1,6 @@
 .dialogs {
     display: grid;
+
     grid-template-columns: 2fr 10fr;
 }
 
@@ -28,17 +29,30 @@
     background-color: antiquewhite;
     margin: 5px;
     padding: 10px;
-    box-sizing: border-box;
     border: 1px solid darkgrey;
     border-radius: 10px;
-    text-align: left;
 }
 
 .right {
     text-align: right;
 }
 
-.message {
+.newMessage {
+    margin: 5px;
+    padding: 10px;
 
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+    text-align: right;
+}
+
+.newMessage textarea {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.newMessage button {
+    border-radius: 10px;
 }
 
