@@ -6,11 +6,15 @@ import NewMessage from "./Message/NewMessage";
 
 const Dialogs = (props) => {
 
-    let dialogsItems = props.state.dialogs
-        .map(d => <DialogItem name={d.name} id={d.id} ava={d.ava}/>)
+    let dialogsItems = props.dialogsPage.dialogs
+        .map((d, i) => <DialogItem name={d.name} id={d.id} ava={d.ava} key={d.name + i.toString()}/>)
 
-    let messagesElements = props.state.messages
-        .map(mState => <MessageLine messageText={mState.message} alignRight={mState.isAuthorMe}/>)
+    let messagesElements = props.dialogsPage.messages
+        .map((mState, i) => <MessageLine
+            messageText={mState.message}
+            alignRight={mState.isAuthorMe}
+            key={i.toString() + '-message'}
+        />)
 
     return (
         <div className={styles.dialogs}>
@@ -21,9 +25,11 @@ const Dialogs = (props) => {
                 <div>{messagesElements}</div>
             </div>
             <div></div>
-            <NewMessage/>
-
-
+            <NewMessage
+                newMessageText={props.dialogsPage.newMessageText}
+                addMessage={props.addMessage}
+                updateNewMessageText={props.updateNewMessageText}
+            />
         </div>
     )
 }

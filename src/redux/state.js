@@ -28,7 +28,8 @@ const state = {
             {id: 3, message: 'Yo', isAuthorMe: false},
             {id: 4, message: 'Yo', isAuthorMe: true},
             {id: 5, message: 'Yo', isAuthorMe: false}
-        ]
+        ],
+        newMessageText: 'Now I\'m learning React JS'
     },
     sidebar: {
         friends: [
@@ -44,7 +45,6 @@ const state = {
 }
 
 export let addPost = () => {
-
     let newPost = {
         id: 6,
         message: state.profilePage.newPostText,
@@ -55,9 +55,28 @@ export let addPost = () => {
     rerenderEntireTree(state);
 }
 
+export let addMessage = () => {
+    let newMessage = {
+        id: 6,
+        message: state.dialogsPage.newMessageText,
+        isAuthorMe: true
+    }
+    state.dialogsPage.messages.push(newMessage);
+    console.log(state.dialogsPage.newMessageText)
+
+    state.dialogsPage.newMessageText = '';
+    console.log(state.dialogsPage.newMessageText)
+    rerenderEntireTree(state);
+}
+
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
+}
+
+export let updateNewMessageText = (newText) => {
+    state.dialogsPage.newMessageText = newText;
+    rerenderEntireTree(state)
 }
 
 export default state;

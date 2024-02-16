@@ -7,7 +7,7 @@ const Sidebar = (props) => {
     let onlineFriends3 = props.state.friends
         .filter((f, i) => f.online)
         .filter((f, i) => i < 3)
-        .map((f) => <FriendImg name={f.firstName} id={f.id} ava={f.ava} isOnline={f.online}/>)
+        .map((f, i) => <FriendImg name={f.firstName} id={f.id} ava={f.ava} isOnline={f.online} key={i+'frindimg'}/>)
 
     return (
         <div className={styles.friendImgs}>
