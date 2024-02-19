@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "./../Dialogs.module.css";
-import MessageLine from "./MessageLine";
 
 const NewMessage = (props) => {
 
     let newMessage = React.createRef()
     let addMessage = () => {
-        props.addMessage()
+        props.addMessage();
     }
 
     let onMessageChange = (e) => {
