@@ -7,7 +7,7 @@ import NewMessage from "./Message/NewMessage";
 const Dialogs = (props) => {
 
     let dialogsItems = props.dialogsPage.dialogs
-        .map((d, i) => <DialogItem name={d.name} id={d.id} ava={d.ava} key={d.name + i.toString()}/>)
+        .map((d, i) => <DialogItem name={d.name} id={d.id + i.toString()} ava={d.ava} key={d.name + i.toString()}/>)
 
     let messagesElements = props.dialogsPage.messages
         .map((mState, i) => <MessageLine

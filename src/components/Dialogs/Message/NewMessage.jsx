@@ -6,14 +6,15 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../
 
 const NewMessage = (props) => {
 
-    let newMessage = React.createRef()
+    // let newMessage = React.createRef()
     let addMessage = () => {
         props.dispatch(addMessageActionCreator());
     }
 
     let onMessageChange = (e) => {
-        let text = newMessage.current.value
-        props.dispatch(updateNewMessageTextActionCreator(text))
+        let textBody = e.target.value
+        // let text = newMessage.current.value
+        props.dispatch(updateNewMessageTextActionCreator(textBody))
     }
 
     return (
@@ -21,7 +22,7 @@ const NewMessage = (props) => {
             <div className={styles.newMessage}>
                 <textarea
                     onChange={onMessageChange}
-                    ref={newMessage}
+                    // ref={newMessage}
                     value={props.newMessageText}
                 ></textarea>
                 <button onClick={ addMessage }>addMessage</button>

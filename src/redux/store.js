@@ -16,7 +16,7 @@ const store = {
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'Yo'}
             ],
-            newPostText: 'IP-Acoustica'
+            newPostText: ''
         },
         dialogsPage: {
             dialogs: [
@@ -34,7 +34,7 @@ const store = {
                 {id: 4, message: 'Yo', isAuthorMe: true},
                 {id: 5, message: 'Yo', isAuthorMe: false}
             ],
-            newMessageText: 'Now I\'m learning React JS'
+            newMessageText: ''
         },
         sidebar: {
             friends: [
