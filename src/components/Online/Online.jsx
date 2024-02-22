@@ -6,7 +6,12 @@ const Online = (props) => {
 
     let onlineFriends = props.state.friends
         .filter((f) => f.online)
-        .map(f => <Friend name={f.firstName} id={f.id} ava={f.ava} isOnline={f.online}/>)
+        .map((f, i) => <Friend
+            name={f.firstName}
+            id={f.id} ava={f.ava}
+            isOnline={f.online}
+            key={f.name + i.toString()}
+        />)
 
     return (
         <div className={styles.friends}>
