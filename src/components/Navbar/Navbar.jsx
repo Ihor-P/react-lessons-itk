@@ -41,7 +41,7 @@ const Navbar = (props) => {
             {/*    />*/}
             {/*</div>*/}
 
-            <Sidebar state={props.state.sidebar}/>
+            <Sidebar /*state={props.state.sidebar}*//>
 
         </div>
     </nav>

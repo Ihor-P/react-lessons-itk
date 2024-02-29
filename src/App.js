@@ -16,22 +16,22 @@ const App = (props) => {
 
         <div className="app-wrapper">
             <Header/>
-            <Navbar state={props.state}/>
+            <Navbar /*state={props.state}*//>
             <div className="app-wrapper-content">
                 <Route path='/dialogs' render={() => <Dialogs
-                    store={props.store}
+                    // store={props.store}
                     // dialogsPage={props.state.dialogsPage}
                     // dispatch={props.dispatch}
                 />}
                 />
                 <Route path='/profile' render={() => <Profile
-                    store={props.store}
+                    // store={props.store}
                 />}
                 />
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
-                <Route path='/online' render={() => <Online state={props.state.sidebar}/>}/>
+                <Route path='/online' render={() => <Online /*state={props.state.sidebar}*//>}/>
             </div>
         </div>
 
