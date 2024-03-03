@@ -4,7 +4,7 @@ import Friend from "./Friend/Friend"
 
 const Online = (props) => {
 
-    let onlineFriends = props.state.friends
+    let onlineFriends = props.state
         .filter((f) => f.online)
         .map((f, i) => <Friend
             name={f.firstName}

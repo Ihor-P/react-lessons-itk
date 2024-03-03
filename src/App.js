@@ -9,6 +9,8 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Online from "./components/Online/Online";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import OnlineContainer from "./components/Online/OnlineContainer";
 
 
 const App = (props) => {
@@ -18,20 +20,12 @@ const App = (props) => {
             <Header/>
             <Navbar state={props.state}/>
             <div className="app-wrapper-content">
-                <Route path='/dialogs' render={() => <Dialogs
-                    dialogsPage={props.state.dialogsPage}
-                    dispatch={props.dispatch}
-                />}
-                />
-                <Route path='/profile' render={() => <Profile
-                    profilePage={props.state.profilePage}
-                    dispatch={props.dispatch}
-                />}
-                />
+                <Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
+                <Route path='/profile' render={() => <Profile store={props.store} />} />
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
-                <Route path='/online' render={() => <Online state={props.state.sidebar}/>}/>
+                <Route path='/online' render={() => <OnlineContainer store={props.store}/>}/>
             </div>
         </div>
 

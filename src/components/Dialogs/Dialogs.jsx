@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import MessageLine from "./Message/MessageLine";
-import NewMessage from "./Message/NewMessage";
+import NewMessageContainer from "./Message/NewMessageContainer";
 
 const Dialogs = (props) => {
 
-    let dialogsItems = props.dialogsPage.dialogs
+    let dialogsItems = props.state.dialogs
         .map((d, i) => <DialogItem name={d.name} id={d.id + i.toString()} ava={d.ava} key={d.name + i.toString()}/>)
 
-    let messagesElements = props.dialogsPage.messages
+    let messagesElements = props.state.messages
         .map((mState, i) => <MessageLine
             messageText={mState.message}
             alignRight={mState.isAuthorMe}
@@ -24,9 +24,12 @@ const Dialogs = (props) => {
             <div className={styles.messages}>
                 <div>{messagesElements}</div>
             </div>
-            <div></div>
-            <NewMessage
-                newMessageText={props.dialogsPage.newMessageText}
+            <div>
+                {/*div for flex*/}
+            </div>
+            <NewMessageContainer
+                state={props.state}
+                newMessageText={props.state.newMessageText}
                 dispatch={props.dispatch}
             />
         </div>
