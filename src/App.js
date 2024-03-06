@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import OnlineContainer from "./components/Online/OnlineContainer";
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 const App = (props) => {
@@ -26,6 +27,7 @@ const App = (props) => {
                 <Route path='/settings' render={() => <Settings />} />
                 <Route path='/online' render={() => <OnlineContainer store={props.store} />} />
                 <Route path='/sidebar' render={() => <SidebarContainer store={props.store} />} />
+                <Route path='/users' render={() => <UsersContainer store={props.store} />} />
             </div>
         </div>
 

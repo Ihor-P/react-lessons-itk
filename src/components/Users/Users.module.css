@@ -1,0 +1,16 @@
+.ava {
+   width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10%;
+
+}
+.users {
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: stretch;
+}
+
