@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import Friend from "../Online/Friend/Friend";
-import Sidebar from "../Sidebar/Sidebar";
+import SidebarContainer from "../Sidebar/SidebarContainer";
 
 const Navbar = (props) => {
 
@@ -41,7 +40,7 @@ const Navbar = (props) => {
             {/*    />*/}
             {/*</div>*/}
 
-            <Sidebar state={props.state.sidebar}/>
+            {<SidebarContainer />}
 
         </div>
     </nav>

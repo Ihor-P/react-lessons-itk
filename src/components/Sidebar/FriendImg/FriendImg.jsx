@@ -3,7 +3,7 @@ import styles from "./../Sidebar.module.css";
 
 const FriendImg = (props) => {
     return (
-        <div className={`${styles.friendAva} ${props.isOnline ? styles.block : styles.none}`}>
+        <div className={`${styles.friendAva} `}>
             <img
                 src={props.ava}
                 alt=""

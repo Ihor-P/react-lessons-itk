@@ -2,15 +2,14 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
-import Online from "./components/Online/Online";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import OnlineContainer from "./components/Online/OnlineContainer";
+import SidebarContainer from "./components/Sidebar/SidebarContainer";
 
 
 const App = (props) => {
@@ -26,6 +25,7 @@ const App = (props) => {
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
                 <Route path='/online' render={() => <OnlineContainer store={props.store}/>}/>
+                <Route path='/sidebar' render={() => <SidebarContainer store={props.store}/>}/>
             </div>
         </div>
 

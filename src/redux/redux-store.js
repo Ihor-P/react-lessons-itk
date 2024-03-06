@@ -6,7 +6,7 @@ import onlineReducer from "./online-reducer";
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    sidebar: onlineReducer
+    online: onlineReducer
 })
 
 let store = createStore(reducers);
