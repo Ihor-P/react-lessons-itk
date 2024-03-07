@@ -1,18 +1,28 @@
 import React from "react";
 import styles from './Users.module.css'
+import axios from "axios";
 
 const Users = (props) => {
 
    if (props.users.length === 0) {
-       props.setUsers([
-               {id: 1, followed: false, fullName: 'Ihor', status: 'Musician, Songwriter, Singer', location: {country: 'USSR', city: 'Gretsovka'},
-                   ava: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ITalkov.jpg/273px-ITalkov.jpg'},
-               {id: 2, followed: true, fullName: 'Hannah', status: 'Singer', location: {country: 'Ukraine', city: 'Drogobych'},
-                   ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQ4famt-XstmupyE2MxxkktJskPyRCyrGHQ&usqp=CAU'},
-               {id: 3, followed: false, fullName: 'Elizabeth', status: 'model', location: {country: 'Sweden', city: 'Stockholm'},
-                   ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI76uSgQbcJ2cLXyTV5W0Oz75qS6Ztwok_3Q&usqp=CAU'},
-           ]
-       )
+
+       axios.get('https://social-network.samuraijs.com/api/1.0/users')
+           .then(response => {
+               console.log('what?')
+           debugger
+           props.setUsers(response.data.items)
+
+       }).catch(function (error) {
+           // обработка ошибки
+           console.log(error);
+       })
+           .finally(function () {
+               // выполняется всегда
+               console.log('finally')
+           });
+
+
+
    }
 
     return <div className={styles.users}>
@@ -21,10 +31,11 @@ const Users = (props) => {
                 <div className={styles.user}>
                 <div>
                     <span>
-                        <img className={styles.ava} src={u.ava}/>
+                        <img className={styles.ava} src={u.photos.small != null ? u.photos.small
+                            : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ITalkov.jpg/273px-ITalkov.jpg'}/>
                     </span>
-                    <span>{u.fullName} </span>
-                    <span>{u.location.country} </span>
+                    <span>{u.name} </span>
+                    <span>{'u.location.country'} </span>
                 </div>
                 <div>
                     <span>
@@ -34,7 +45,7 @@ const Users = (props) => {
                         }
                     </span>
                     <span>{u.status} </span>
-                    <span>{u.location.city} </span>
+                    <span>{'u.location.city'} </span>
                 </div>
                 </div>
             </div>)
