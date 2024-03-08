@@ -4,27 +4,46 @@ import axios from "axios";
 
 class Users extends React.Component {
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
+    //
+    //     // alert('NEW')
+    //
+    //         axios.get('https://social-network.samuraijs.com/api/1.0/users')
+    //             //https://jsonviewer.stack.hu/ - json online viewer
+    //             //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
+    //             .then(response => {
+    //                 console.log('what?')
+    //                 this.props.setUsers(response.data.items)
+    //             })
+    //             .catch(function (error) {
+    //                 // обработка ошибки
+    //                 console.log(error);
+    //             })
+    //             .finally(function () {
+    //                 // выполняется всегда
+    //                 console.log('finally')
+    //             });
+    //
+    // }
 
-        // alert('NEW')
-
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                //https://jsonviewer.stack.hu/ - json online viewer
-                //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
-                .then(response => {
-                    console.log('what?')
-                    this.props.setUsers(response.data.items)
-                })
-                .catch(function (error) {
-                    // обработка ошибки
-                    console.log(error);
-                })
-                .finally(function () {
-                    // выполняется всегда
-                    console.log('finally')
-                });
-
+    componentDidMount() {
+        alert('New')
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            //https://jsonviewer.stack.hu/ - json online viewer
+            //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
+            .then(response => {
+                console.log('what?')
+                this.props.setUsers(response.data.items)
+            })
+            .catch(function (error) {
+                // обработка ошибки
+                console.log(error);
+            })
+            .finally(function () {
+                // выполняется всегда
+                console.log('finally')
+            });
     }
 
     // getUsers = () => {
