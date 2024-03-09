@@ -28,8 +28,28 @@ class Users extends React.Component {
     // }
 
     componentDidMount() {
-        alert('New')
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            //https://jsonviewer.stack.hu/ - json online viewer
+            //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
+            .then(response => {
+                console.log('what?')
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+            .catch(function (error) {
+                // обработка ошибки
+                console.log(error);
+            })
+            .finally(function () {
+                // выполняется всегда
+                console.log('finally')
+            });
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props. setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             //https://jsonviewer.stack.hu/ - json online viewer
             //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
             .then(response => {
@@ -50,7 +70,28 @@ class Users extends React.Component {
     //
     // }
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+
+        let pages = [];
+        for (let i = 1; i <=pagesCount; i++) {
+            pages.push(i);
+        }
+
         return <div className={styles.users}>
+            <div className={styles.pageCounter}>
+
+                { pages.map( p=> {
+                    return <span className={this.props.currentPage === p && styles.selectedPage}
+                    onClick={(e) => { this.onPageChanged(p) }}>{p}</span>
+                })}
+
+                {/*<span>1</span>*/}
+                {/*<span>2</span>*/}
+                {/*<span>3</span>*/}
+                {/*<span>4</span>*/}
+                {/*<span>5</span>*/}
+            </div>
             {/*<div>*/}
             {/*    <button onClick={this.getUsers}>Get Users</button>*/}
             {/*</div>*/}
@@ -67,9 +108,13 @@ class Users extends React.Component {
                         </div>
                         <div>
                     <span>
-                        { u.followed
-                            ? <button onClick={()=> {this.props.unfollow(u.id)}}>unfollow</button>
-                            : <button onClick={()=> {this.props.follow(u.id)}}>follow</button>
+                        {u.followed
+                            ? <button onClick={() => {
+                                this.props.unfollow(u.id)
+                            }}>unfollow</button>
+                            : <button onClick={() => {
+                                this.props.follow(u.id)
+                            }}>follow</button>
                         }
                     </span>
                             <span>{u.status} </span>
@@ -81,7 +126,6 @@ class Users extends React.Component {
         </div>
     }
 }
-
 
 
 export default Users
