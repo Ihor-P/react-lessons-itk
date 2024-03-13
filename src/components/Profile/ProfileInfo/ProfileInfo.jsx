@@ -16,9 +16,9 @@ const ProfileInfo = (props) => {
                     alt='main_photo(seaBeach)'/>
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large}/>
-                <div>{props.profile.aboutMe}</div>
-                <div>Связаться: {props.profile.contacts.vk}</div>
+                <img src={props.profile.photos.large} alt='фото профілю'/>
+                <div>Про мене: {props.profile.aboutMe}</div>
+                <div>Зв'язатися: {props.profile.contacts.vk}</div>
                 <div>Шукаю роботу: {props.profile.lookingForAJob ? <span>так ˙◠˙ {props.profile.lookingForAJobDescription}</span> : <span>ні ヅ</span>}</div>
                 ava + description
             </div>
