@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {follow, setCurrentPage, setUsers, setUsersTotalCount, unfollow, toggleIsFetching} from "../../redux/users-reducer";
 import axios from "axios";
 import Users from "./Users";
-import preloader from './../../assets/images/preloader.svg'
 import Preloader from "../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component {
@@ -16,7 +15,6 @@ class UsersContainer extends React.Component {
             //https://social-network.samuraijs.com/docs# - SamuraiJS Social Network API documentation version 1.0.0
             .then(response => {
                 this.props.toggleIsFetching(false)
-                console.log('what?')
                 this.props.setUsers(response.data.items)
                 this.props.setUsersTotalCount(response.data.totalCount)
             })

@@ -3,6 +3,7 @@ import React from "react";
 // import axios from "axios";
 
 import styles from "./Users.module.css";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
 
@@ -28,8 +29,10 @@ const Users = (props) => {
                 <div className={styles.user}>
                     <div>
                     <span>
-                        <img className={styles.ava} src={u.photos.small != null ? u.photos.small
+                        <NavLink to={'profile/' + u.id}>
+                            <img className={styles.ava} src={u.photos.small != null ? u.photos.small
                             : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ITalkov.jpg/273px-ITalkov.jpg'}/>
+                        </NavLink>
                     </span>
                         <span>{u.name} </span>
                         <span>{'u.location.country'} </span>
