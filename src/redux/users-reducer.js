@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -7,14 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
-    users: [
-        // {id: 1, followed: false, fullName: 'Ihor', status: 'Musician, Songwriter, Singer', location: {country: 'USSR', city: 'Gretsovka'},
-        //     ava: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ITalkov.jpg/273px-ITalkov.jpg'},
-        // {id: 2, followed: true, fullName: 'Hannah', status: 'Singer', location: {country: 'Ukraine', city: 'Drogobych'},
-        //     ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQ4famt-XstmupyE2MxxkktJskPyRCyrGHQ&usqp=CAU'},
-        // {id: 3, followed: false, fullName: 'Elizabeth', status: 'model', location: {country: 'Sweden', city: 'Stockholm'},
-        //     ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI76uSgQbcJ2cLXyTV5W0Oz75qS6Ztwok_3Q&usqp=CAU'},
-    ],
+    users: [],
     pageSize: 4,
     totalUsersCount: 0,
     currentPage: 1,
@@ -69,11 +64,64 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (userId) => ({type: FOLLOW, userId})
-export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+
+
+export const followSuccess = (userId) => ({type: FOLLOW, userId})
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_USERS_TOTAL_COUNT, count: totalUsersCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
+
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setCurrentPage(currentPage))
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setUsersTotalCount(data.totalCount))
+        })
+            .catch(function (error) {
+                // обработка ошибки
+                console.log(error);
+            })
+            .finally(function () {
+                // выполняется всегда
+            });
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId))
+
+        usersAPI.unfollow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowSuccess(userId))
+                }
+                dispatch(toggleFollowingProgress(false, userId))
+            })
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId))
+
+        usersAPI.follow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(toggleFollowingProgress(false, userId))
+            })
+    }
+}
+
+
 export default usersReducer

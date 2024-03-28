@@ -1,8 +1,7 @@
 import React from "react";
-import axios from "axios";
 import styles from "./Users.module.css";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
+
 
 const Users = (props) => {
 
@@ -43,42 +42,15 @@ const Users = (props) => {
                             ? <button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => {
-                                props.toggleFollowingProgress(true, u.id)
+                                    props.unfollow(u.id)
 
-                                axios.delete(`https:social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                    withCredentials: true,
-                                    headers: {
-                                        "APi-KEY": "5977f966-317d-44bc-bc9a-5571b905b1ca"
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                        props.toggleFollowingProgress(false, u.id)
-                                    })
-
-                            }}>unfollow</button>
+                                }}>unfollow</button>
                             : <button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => {
-                                props.toggleFollowingProgress(true, u.id)
+                                    props.follow(u.id)
 
-                                // axios.post(`https:social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                //     withCredentials: true,
-                                //     headers: {
-                                //         "APi-KEY": "5977f966-317d-44bc-bc9a-5571b905b1ca"
-                                //     }
-                                // })
-                                    usersAPI.postFollow(u.id)
-                                    .then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.follow(u.id)
-                                        }
-                                        props.toggleFollowingProgress(false, u.id)
-                                    })
-
-                            }}>follow</button>
+                                }}>follow</button>
                         }
                     </span>
                         <span>{u.status} </span>
